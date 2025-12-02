@@ -92,9 +92,9 @@ A single-page chat application with a React frontend and FastAPI backend. It use
    - Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
    - Free tier available
 
-# How to Set Up Google Gemini API
+## How to Set Up Google Gemini API
 
-## Why You're Seeing Mock Responses
+### Why You're Seeing Mock Responses
 
 If you see messages like:
 
