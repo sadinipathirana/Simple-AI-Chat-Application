@@ -228,17 +228,6 @@ This may take a few minutes.
 npm start
 ```
 
-**Expected Output:**
-
-Compiled successfully!
-
-You can now view frontend in the browser.
-
-Local: http://localhost:3000
-On Your Network: http://192.168.x.x:3000
-
-The browser should automatically open to `http://localhost:3000`.
-
 ### Step 4: Access the Application
 
 - **Frontend UI:** http://localhost:3000
