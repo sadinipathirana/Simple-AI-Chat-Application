@@ -174,7 +174,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv pip install -r requirements.txt
 ```
 
-#### 2.3 Create `.env` File
+#### 2.4 Create `.env` File
 
 Create a `.env` file in the `backend/` directory:
 
@@ -204,7 +204,7 @@ GEMINI_MODEL=gemini-2.5-flash
 
 **Important:** Replace `gemini_api_key_here` with your actual Gemini API key.
 
-#### 2.4 Start Backend Server
+#### 2.5 Start Backend Server
 
 ```bash
 # Using uvicorn directly
