@@ -243,8 +243,6 @@ cd frontend
 npm install
 ```
 
-This may take a few minutes.
-
 #### 3.4 Start Frontend Development Server
 
 ```bash
