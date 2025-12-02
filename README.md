@@ -128,7 +128,29 @@ cd Simple-AI-Chat-Application
 cd backend
 ```
 
-#### 2.2 Install Python Dependencies
+#### 2.2 Create & Activate a Virtual Environment
+
+**Linux/Mac:**
+
+```bash
+# Create virtual environment
+python3 -m venv .venv
+
+# Activate virtual environment
+source .venv/bin/activate
+```
+
+**Windows (PowerShell):**
+
+```bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate virtual environment
+.venv\Scripts\Activate.ps1
+```
+
+#### 2.3 Install Python Dependencies
 
 **Option A: Using pip (Recommended)**
 
@@ -147,6 +169,7 @@ py -m pip install -r requirements.txt
 ```bash
 # Install uv first
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Then install dependencies
 uv pip install -r requirements.txt
 ```
