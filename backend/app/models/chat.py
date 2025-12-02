@@ -1,5 +1,5 @@
 """ Pydantic models for chat request/response schemas """
-from pydantic import BaseModel  # pyright: ignore[reportMissingImports]
+from pydantic import BaseModel  
 from typing import List,Optional
 
 

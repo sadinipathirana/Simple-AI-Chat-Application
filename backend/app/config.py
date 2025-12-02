@@ -1,8 +1,20 @@
 """Application configuration settings.""" 
 import os 
-from dotenv import load_dotenv   # pyright: ignore[reportMissingImports]
+from pathlib import Path
+from dotenv import load_dotenv 
 
-load_dotenv() 
+# Get the backend directory (parent of app directory)
+BACKEND_DIR = Path(__file__).parent.parent
+ENV_FILE = BACKEND_DIR / ".env"
+
+# Load .env file explicitly from backend directory
+if ENV_FILE.exists():
+    load_dotenv(dotenv_path=ENV_FILE)
+    print(f" Loaded .env file from: {ENV_FILE}")
+else:
+    # Fallback to default load_dotenv behavior
+    load_dotenv()
+    print(f" .env file not found at {ENV_FILE}, using default load_dotenv()") 
 
 class Settings:
     """Application settings loaded from environment variables."""

@@ -1,8 +1,9 @@
 """Chat API routes"""
-from fastapi import APIRouter, HTTPException  # pyright: ignore[reportMissingImports]
+from fastapi import APIRouter, HTTPException
 from app.models.chat import ChatRequest, ChatResponse
 from app.services.gemini import GeminiService
 from app.services.chat_history import ChatHistoryService
+from app.config import settings
 
 router = APIRouter(tags=["chat"])
 

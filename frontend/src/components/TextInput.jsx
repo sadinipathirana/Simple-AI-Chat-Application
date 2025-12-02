@@ -21,7 +21,7 @@ const TextInput = ({ onSend, disabled }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex gap-2 px-4 py-3 md:px-6 md:py-4 border-t border-slate-200 bg-white"
+      className="flex gap-3 px-6 py-4 border-t border-gray-200 bg-white"
     >
       <input
         type="text"
@@ -30,12 +30,12 @@ const TextInput = ({ onSend, disabled }) => {
         onKeyDown={handleKeyPress}
         placeholder="Type your message..."
         disabled={disabled}
-        className="flex-1 px-4 py-2.5 text-sm md:text-base border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 placeholder:text-slate-400 disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
+        className="flex-1 px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 placeholder:text-gray-400 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
       />
       <button
         type="submit"
         disabled={disabled || !message.trim()}
-        className="px-5 md:px-6 py-2.5 text-sm md:text-base font-semibold rounded-xl bg-sky-600 text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 disabled:bg-slate-300 disabled:text-slate-600 disabled:cursor-not-allowed transition-colors"
+        className="px-6 py-3 text-sm font-semibold rounded-lg bg-teal-600 text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-1 disabled:bg-gray-300 disabled:text-gray-600 disabled:cursor-not-allowed transition-colors"
       >
         Send
       </button>

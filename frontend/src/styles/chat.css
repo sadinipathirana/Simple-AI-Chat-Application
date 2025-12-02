@@ -1,18 +1,9 @@
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: white;
-}
-
-/*Smooth scrollung*/
-.chat-window {
+/* Smooth scrolling */
+* {
   scroll-behavior: smooth;
 }
 
-/*Loading animation*/
+/* Loading animation */
 @keyframes pulse {
   0%,
   100% {
@@ -25,4 +16,22 @@
 
 .loading {
   animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

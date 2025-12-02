@@ -13,11 +13,21 @@ const ChatWindow = ({ messages, isLoading }) => {
   }, [messages, isLoading]);
 
   return (
-    <div className="h-full overflow-y-auto px-4 py-4 md:px-6 md:py-5 bg-slate-50">
+    <div className="h-full overflow-y-auto px-6 py-6 bg-white">
       {messages.length === 0 ? (
-        <div className="flex items-center justify-center h-full text-slate-500">
-          <p className="text-sm md:text-base text-center max-w-md">
-            How can I help you today?
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="relative mb-6">
+            <div className="w-24 h-24 rounded-full border-4 border-dashed border-teal-300 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center">
+                <span className="text-4xl">💬</span>
+              </div>
+            </div>
+          </div>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+            Start a conversation
+          </h3>
+          <p className="text-sm text-gray-500">
+            Ask me anything, I'm here to help!
           </p>
         </div>
       ) : (
@@ -31,9 +41,9 @@ const ChatWindow = ({ messages, isLoading }) => {
           ))}
 
           {isLoading && (
-            <div className="flex justify-start mb-3 md:mb-4">
-              <div className="bg-slate-100 border border-slate-200 rounded-2xl px-4 py-2">
-                <p className="text-sm text-slate-600 animate-pulse">
+            <div className="flex justify-start mb-4">
+              <div className="bg-gray-100 rounded-2xl px-4 py-3">
+                <p className="text-sm text-gray-600 animate-pulse">
                   Thinking…
                 </p>
               </div>

@@ -4,18 +4,18 @@ import React from "react";
 const MessageBubble = ({ message, isUser }) => {
   return (
     <div
-      className={`flex mb-3 md:mb-4 ${
+      className={`flex mb-4 ${
         isUser ? "justify-end" : "justify-start"
       }`}
     >
       <div
-        className={`max-w-[78%] md:max-w-[70%] px-4 py-2.5 rounded-2xl shadow-sm ${
+        className={`max-w-[75%] px-4 py-3 rounded-2xl ${
           isUser
-            ? "bg-sky-600 text-white rounded-br-sm"
-            : "bg-slate-100 text-slate-900 border border-slate-200 rounded-bl-sm"
+            ? "bg-teal-600 text-white rounded-br-sm"
+            : "bg-gray-100 text-gray-900 rounded-bl-sm"
         }`}
       >
-        <p className="text-sm md:text-[0.95rem] leading-relaxed whitespace-pre-wrap break-words">
+        <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
           {message}
         </p>
       </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ChatWindow from "./components/ChatWindow";
 import TextInput from "./components/TextInput";
-import SessionSidebar from "./components/SessionSidebar";
+import ChatList from "./components/ChatList";
 import { sendMessage, getChatHistory } from "./services/api";
 import "./styles/chat.css";
 
@@ -9,7 +9,6 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Initialize session ID and load history
   useEffect(() => {
@@ -81,50 +80,20 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-100">
-      {/* Sidebar */}
-      <SessionSidebar
+    <div className="flex h-screen bg-gray-50">
+
+      {/* Left-Middle Panel - Chat List */}
+      <ChatList
         currentSessionId={sessionId}
         onSessionSelect={setSessionId}
-        isOpen={sidebarOpen}
-        onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+        onCreateNewChat={createNewChat}
       />
 
-      {/* Main chat area */}
-      <div className="chat-container flex flex-col rounded-2xl shadow-xl border border-slate-200 bg-white/90 backdrop-blur-sm overflow-hidden flex-1 m-4">
-        <header className="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-sky-600 to-indigo-600 text-white flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-              Simple AI Chat
-            </h1>
-            <p className="mt-1 text-sm md:text-base text-slate-100/90">
-              Powered by Google Gemini
-            </p>
-          </div>
-          <div className="flex gap-2">
-            {/* Menu button for mobile */}
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="lg:hidden bg-white/20 hover:bg-white/30 px-3 py-2 rounded text-sm transition-colors"
-              title="Toggle chat history"
-            >
-              📋
-            </button>
-            {/* New Chat button */}
-            <button
-              onClick={createNewChat}
-              className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              title="Start a new chat"
-            >
-              ➕ New Chat
-            </button>
-          </div>
-        </header>
-
+      {/* Center Panel - Main Chat Area */}
+      <div className="flex-1 flex flex-col bg-white">
         <div className="flex-1 overflow-hidden">
           <ChatWindow messages={messages} isLoading={isLoading} />
         </div>
-
         <TextInput onSend={handleSendMessage} disabled={isLoading} />
       </div>
     </div>
