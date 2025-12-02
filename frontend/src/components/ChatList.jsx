@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getAllSessions, deleteSessionHistory } from "../services/api";
+import {
+  FiSearch,
+  FiPlus,
+  FiMoreVertical,
+  FiMessageSquare,
+  FiTrash2,
+} from "react-icons/fi";
 
 const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
   const [sessions, setSessions] = useState([]);
@@ -40,14 +47,12 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
     if (diffMins < 1) return "Just now";
     if (diffMins < 60) return `${diffMins}m ago`;
     if (diffHours < 24) return `${diffHours}h ago`;
-    
+
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
-  };
-
-  const getInitials = (sessionId) => {
-    return sessionId.substring(0, 2).toUpperCase();
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   const filteredSessions = sessions.filter((session) =>
@@ -66,7 +71,7 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
           />
-          <span className="absolute left-3 top-2.5 text-gray-400">🔍</span>
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
         </div>
       </div>
 
@@ -76,16 +81,18 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
         <div className="flex gap-2">
           <button
             onClick={onCreateNewChat}
-            className="text-gray-400 hover:text-teal-600 transition-colors"
+            className="text-gray-400 hover:text-teal-600 transition-colors p-1" // Added padding for better click area
             title="New chat"
+            aria-label="New chat"
           >
-            ➕
+            <FiPlus className="h-4 w-4" />
           </button>
           <button
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-gray-600 transition-colors p-1"
             title="More options"
+            aria-label="More options"
           >
-            ⋮
+            <FiMoreVertical className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -93,7 +100,9 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
       {/* Chat List */}
       <div className="flex-1 overflow-y-auto">
         {isLoading ? (
-          <div className="text-center text-gray-400 text-sm py-8">Loading...</div>
+          <div className="text-center text-gray-400 text-sm py-8">
+            Loading...
+          </div>
         ) : filteredSessions.length === 0 ? (
           <div className="text-center text-gray-400 text-sm py-8">
             {searchQuery ? "No chats found" : "No chats yet"}
@@ -112,7 +121,7 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
               >
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
-                    💬
+                    <FiMessageSquare className="h-5 w-5" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
@@ -129,10 +138,11 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
                   </div>
                   <button
                     onClick={(e) => handleDeleteSession(e, session.session_id)}
-                    className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 transition-all ml-2"
+                    className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 transition-all ml-2 p-1"
                     title="Delete chat"
+                    aria-label="Delete chat"
                   >
-                    🗑
+                    <FiTrash2 className="h-4 w-4" />
                   </button>
                 </div>
               </div>
@@ -145,4 +155,3 @@ const ChatList = ({ currentSessionId, onSessionSelect, onCreateNewChat }) => {
 };
 
 export default ChatList;
-

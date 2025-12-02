@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllSessions, deleteSessionHistory } from "../services/api";
+import { FiX, FiTrash2 } from "react-icons/fi";
 
 const SessionSidebar = ({
   currentSessionId,
@@ -56,28 +57,12 @@ const SessionSidebar = ({
 
   return (
     <>
-      {/* Mobile overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={onToggleSidebar}
-        />
-      )}
-
       {/* Sidebar */}
       <div
         className={`fixed left-0 top-0 h-full w-64 bg-slate-900 text-white transform transition-transform duration-300 z-50 lg:relative lg:translate-x-0 flex flex-col ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Close button (mobile only) */}
-        <button
-          onClick={onToggleSidebar}
-          className="absolute top-4 right-4 lg:hidden text-slate-300 hover:text-white"
-        >
-          ✕
-        </button>
-
         {/* Header */}
         <div className="p-4 border-b border-slate-700 mt-8 lg:mt-0">
           <h2 className="text-lg font-semibold">Chat History</h2>
@@ -106,13 +91,6 @@ const SessionSidebar = ({
                       ? "bg-sky-600 text-white"
                       : "hover:bg-slate-700 text-slate-300"
                   }`}
-                  onClick={() => {
-                    onSessionSelect(session.session_id);
-                    // Close sidebar on mobile after selection
-                    if (window.innerWidth < 1024) {
-                      onToggleSidebar();
-                    }
-                  }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 min-w-0">
@@ -127,10 +105,11 @@ const SessionSidebar = ({
                       onClick={(e) =>
                         handleDeleteSession(e, session.session_id)
                       }
-                      className="ml-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-400 transition-all"
+                      className="ml-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-400 transition-all p-1"
                       title="Delete this chat"
+                      aria-label="Delete this chat"
                     >
-                      🗑
+                      <FiTrash2 className="h-4 w-4" />
                     </button>
                   </div>
                 </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import MessageBubble from "./MessageBubble";
+import { FiMessageSquare } from "react-icons/fi";
 
 const ChatWindow = ({ messages, isLoading }) => {
   const messagesEndRef = useRef(null);
@@ -19,12 +20,12 @@ const ChatWindow = ({ messages, isLoading }) => {
           <div className="relative mb-6">
             <div className="w-24 h-24 rounded-full border-4 border-dashed border-teal-300 flex items-center justify-center">
               <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center">
-                <span className="text-4xl">💬</span>
+                <FiMessageSquare className="text-4xl text-teal-600" />
               </div>
             </div>
           </div>
           <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-            Start a conversation
+            Start a Conversation
           </h3>
           <p className="text-sm text-gray-500">
             Ask me anything, I'm here to help!
@@ -43,9 +44,7 @@ const ChatWindow = ({ messages, isLoading }) => {
           {isLoading && (
             <div className="flex justify-start mb-4">
               <div className="bg-gray-100 rounded-2xl px-4 py-3">
-                <p className="text-sm text-gray-600 animate-pulse">
-                  Thinking…
-                </p>
+                <p className="text-sm text-gray-600 animate-pulse">Thinking…</p>
               </div>
             </div>
           )}
