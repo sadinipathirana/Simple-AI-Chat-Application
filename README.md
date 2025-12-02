@@ -197,7 +197,7 @@ EOF
 **Or manually create `.env` file:**
 
 ```
-GEMINI_API_KEY=AIzaSyDjYnU-_R_2Nkbdc3IA1KjreK5u9BPb_Qo
+GEMINI_API_KEY=gemini_api_key_here
 ENVIRONMENT=development
 GEMINI_MODEL=gemini-2.5-flash
 ```
